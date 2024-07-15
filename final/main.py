@@ -37,19 +37,19 @@ def model_trainer(df:pd.DataFrame)->Tuple[
 STAGE_04="Prediction"
 
 
-def Prediction(df:pd.DataFrame):
-    pred=Predictor()
-    y_pred=pred.prediction(df)
-    logger.info("Stage {} finished".format(STAGE_04))
-    return y_pred
-
-# To test the flask app
-# def Prediction(df:dict):
+# def Prediction(df:pd.DataFrame):
 #     pred=Predictor()
-#     df = pd.DataFrame([df])
 #     y_pred=pred.prediction(df)
 #     logger.info("Stage {} finished".format(STAGE_04))
-#     return y_pred.tolist()
+#     return y_pred
+
+# To test the flask app
+def Prediction(df:dict):
+    pred=Predictor()
+    df = pd.DataFrame([df])
+    y_pred=pred.prediction(df)
+    logger.info("Stage {} finished".format(STAGE_04))
+    return y_pred.tolist()
 
 def main():
     df=data_loader()
